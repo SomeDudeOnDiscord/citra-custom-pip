@@ -1038,8 +1038,9 @@ void RendererOpenGL::DrawTopScreen(const Layout::FramebufferLayout& layout,
     if (layout.is_rotated) {
         if (Settings::values.render_3d.GetValue() == Settings::StereoRenderOption::Off) {
             int eye = static_cast<int>(Settings::values.mono_render_option.GetValue());
-            DrawSingleScreenRotated(screen_infos[eye], (float)top_screen.left, (float)top_screen.top,
-                                    (float)top_screen.GetWidth(), (float)top_screen.GetHeight());
+            DrawSingleScreenRotated(screen_infos[eye], (float)top_screen.left,
+                                    (float)top_screen.top, (float)top_screen.GetWidth(),
+                                    (float)top_screen.GetHeight());
         } else if (Settings::values.render_3d.GetValue() ==
                    Settings::StereoRenderOption::SideBySide) {
             DrawSingleScreenRotated(screen_infos[0], (float)top_screen.left / 2,
