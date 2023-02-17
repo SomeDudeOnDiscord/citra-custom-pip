@@ -1013,13 +1013,11 @@ void RendererOpenGL::DrawScreens(const Layout::FramebufferLayout& layout, bool f
         ApplySecondLayerOpacity();
         DrawTopScreen(layout, top_screen, stereo_single_screen);
     }
-    state.blend.enabled = false;
 }
 
 void RendererOpenGL::ApplySecondLayerOpacity() {
     if (Settings::values.custom_layout &&
         Settings::values.custom_second_layer_opacity.GetValue() < 100) {
-        state.blend.enabled = true;
         state.blend.src_rgb_func = GL_CONSTANT_ALPHA;
         state.blend.src_a_func = GL_CONSTANT_ALPHA;
         state.blend.dst_a_func = GL_ONE_MINUS_CONSTANT_ALPHA;
