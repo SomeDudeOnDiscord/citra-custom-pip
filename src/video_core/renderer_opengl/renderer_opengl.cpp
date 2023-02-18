@@ -1028,11 +1028,14 @@ void RendererOpenGL::ApplySecondLayerOpacity() {
 }
 
 void RendererOpenGL::ResetSecondLayerOpacity() {
-    state.blend.src_rgb_func = GL_ONE;
-    state.blend.dst_rgb_func = GL_ZERO;
-    state.blend.src_a_func = GL_ONE;
-    state.blend.dst_a_func = GL_ZERO;
-    state.blend.color.alpha = 0.0f;
+    if (Settings::values.custom_layout &&
+        Settings::values.custom_second_layer_opacity.GetValue() < 100) {
+        state.blend.src_rgb_func = GL_ONE;
+        state.blend.dst_rgb_func = GL_ZERO;
+        state.blend.src_a_func = GL_ONE;
+        state.blend.dst_a_func = GL_ZERO;
+        state.blend.color.alpha = 0.0f;
+    }
 }
 
 void RendererOpenGL::DrawTopScreen(const Layout::FramebufferLayout& layout,
